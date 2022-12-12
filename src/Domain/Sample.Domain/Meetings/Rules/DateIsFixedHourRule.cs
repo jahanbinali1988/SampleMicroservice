@@ -3,7 +3,7 @@ using Sample.SharedKernel.SeedWork;
 using System;
 using System.Threading.Tasks;
 
-namespace Sample.Domain.Meeting.Rules
+namespace Sample.Domain.Meetings.Rules
 {
     public class DateIsFixedHourRule : IBusinessRule
     {
@@ -24,7 +24,7 @@ namespace Sample.Domain.Meeting.Rules
         public async Task<bool> IsBroken()
         {
             var result = false;
-            if (_date.Minute > 0 || _date.Second > 0 || _date.Millisecond > 0)
+            if (_date.Minute < 0 && _date.Second < 0 && _date.Millisecond < 0)
                 result = true;
 
             return result;

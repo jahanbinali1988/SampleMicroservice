@@ -1,12 +1,12 @@
 ﻿using Ardalis.GuardClauses;
-using Sample.Domain.Meeting.DomainServices;
-using Sample.Domain.Meeting.Rules;
+using Sample.Domain.Meetings.DomainServices;
+using Sample.Domain.Meetings.Rules;
 using Sample.Domain.Shared;
 using Sample.SharedKernel.SeedWork;
 using System;
 using System.Threading.Tasks;
 
-namespace Sample.Domain.Meeting
+namespace Sample.Domain.Meetings
 {
     public class MeetingEntity : Entity<Guid>, IAggregateRoot
     {

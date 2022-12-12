@@ -1,10 +1,10 @@
-﻿using Sample.Domain.Meeting.DomainServices;
+﻿using Sample.Domain.Meetings.DomainServices;
 using Sample.Domain.Shared;
 using Sample.SharedKernel.SeedWork;
 using System;
 using System.Threading.Tasks;
 
-namespace Sample.Domain.Meeting.Rules
+namespace Sample.Domain.Meetings.Rules
 {
     public class ReserveMeetingRule : IBusinessRule
     {

@@ -1,14 +1,14 @@
-﻿using Sample.Domain.Meeting;
-using Sample.Domain.Meeting.DomainServices;
-using Sample.Infrastructure.Domain.Meeting;
-using Sample.Infrastructure.DomainService.Meeting;
-using Sample.Infrastructure.EventProcessing;
+﻿using Sample.Infrastructure.EventProcessing;
 using Sample.Infrastructure.Persistence;
 using Sample.SharedKernel.EventProcessing.DomainEvent;
 using Sample.SharedKernel.SeedWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sample.Domain.Meetings.DomainServices;
+using Sample.Domain.Meetings;
+using Sample.Infrastructure.DomainService.Meetings;
+using Sample.Infrastructure.Domain.Meetings;
 
 namespace Sample.Infrastructure
 {
@@ -36,7 +36,7 @@ namespace Sample.Infrastructure
 
         public static IServiceCollection AddConnection(this IServiceCollection services, IConfiguration configuration)
         {
-            var sqlConnection = configuration.GetValue<string>("ConnectionStrings:MSSQL");
+            var sqlConnection = configuration.GetValue<string>("ConnectionStrings:DefaultConnection");
 
             AddRepository(services, sqlConnection);
 

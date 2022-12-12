@@ -1,9 +1,10 @@
-﻿using Sample.Domain.Meeting;
+﻿using Sample.Domain.Meetings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
+using Sample.SharedKernel.SeedWork;
 
-namespace Sample.Infrastructure.Domain.Meeting
+namespace Sample.Infrastructure.Domain.Meetings
 {
     internal class MeetingTypeConfiguration : IEntityTypeConfiguration<MeetingEntity>
     {
@@ -25,6 +26,7 @@ namespace Sample.Infrastructure.Domain.Meeting
 
             builder.HasQueryFilter(p => EF.Property<bool>(p, "IsDeleted") == false);
 
+            builder.ToTable<MeetingEntity>(nameof(MeetingEntity));
         }
     }
 }

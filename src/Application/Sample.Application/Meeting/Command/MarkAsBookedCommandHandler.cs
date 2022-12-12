@@ -1,7 +1,7 @@
 ﻿using Sample.Application.Contract.Exceptions;
 using Sample.Application.Contract.Meeting.Command;
-using Sample.Domain.Meeting;
-using Sample.Domain.Meeting.DomainServices;
+using Sample.Domain.Meetings;
+using Sample.Domain.Meetings.DomainServices;
 using Sample.SharedKernel.Application;
 using Sample.SharedKernel.SeedWork;
 using MediatR;

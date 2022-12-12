@@ -1,10 +1,10 @@
-﻿using Sample.Domain.Meeting;
-using Sample.Domain.Meeting.DomainServices;
+﻿using Sample.Domain.Meetings;
+using Sample.Domain.Meetings.DomainServices;
 using Moq;
 using System;
 using System.Threading.Tasks;
 
-namespace Sample.Domain.Test.Meeting
+namespace Sample.Domain.Test.Meetings
 {
     public class MeetingEntityTestBuilder
     {

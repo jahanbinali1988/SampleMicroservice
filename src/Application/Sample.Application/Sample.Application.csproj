@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Mapster" />
@@ -10,8 +10,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\SharedKernel\Sample.SharedKernel\Sample.SharedKernel.csproj" />
-	  <ProjectReference Include="..\Sample.Application.Contract\Sample.Application.Contract.csproj" />
+		<ProjectReference Include="..\..\..\SharedKernel\Sample.SharedKernel\Sample.SharedKernel.csproj" />
+		<ProjectReference Include="..\Sample.Application.Contract\Sample.Application.Contract.csproj" />
 	</ItemGroup>
-	
+
 </Project>

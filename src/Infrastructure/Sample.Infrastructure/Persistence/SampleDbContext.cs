@@ -1,6 +1,6 @@
-﻿using Sample.Domain.Meeting;
-using Sample.Infrastructure.Domain.Meeting;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Sample.Domain.Meetings;
+using Sample.Infrastructure.Domain.Meetings;
 
 namespace Sample.Infrastructure.Persistence
 {

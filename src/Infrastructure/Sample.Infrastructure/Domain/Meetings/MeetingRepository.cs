@@ -1,4 +1,4 @@
-﻿using Sample.Domain.Meeting;
+﻿using Sample.Domain.Meetings;
 using Sample.Infrastructure.Persistence;
 using Sample.SharedKernel.Application;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sample.Infrastructure.Domain.Meeting
+namespace Sample.Infrastructure.Domain.Meetings
 {
     public class MeetingRepository : RepositoryBase<MeetingEntity>, IMeetingRepository
     {
@@ -17,7 +17,7 @@ namespace Sample.Infrastructure.Domain.Meeting
 
         public async Task<Pagination<MeetingEntity>> GetListByHostMsisdnAsync(long msisdn, int skip, int take, CancellationToken token)
         {
-            var count = await base.DbContext.Meetings.CountAsync(c => c.HostMsisdn == msisdn);
+            var count = await base.DbContext.Set<MeetingEntity>().CountAsync(c => c.HostMsisdn == msisdn);
             if (count == 0)
                 return new Pagination<MeetingEntity>()
                 {
@@ -27,7 +27,7 @@ namespace Sample.Infrastructure.Domain.Meeting
 
             return new Pagination<MeetingEntity>()
             {
-                Items = await base.DbContext.Meetings.Where(c => c.HostMsisdn == msisdn).Skip(take * skip).Take(take).ToListAsync(),
+                Items = await base.DbContext.Set<MeetingEntity>().Where(c => c.HostMsisdn == msisdn).Skip(take * skip).Take(take).ToListAsync(),
                 TotalItems = count
             };
         }

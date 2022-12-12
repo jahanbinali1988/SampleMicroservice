@@ -1,6 +1,6 @@
 ﻿using Sample.Application.Contract.Meeting;
 using Sample.Application.Contract.Meeting.Query;
-using Sample.Domain.Meeting;
+using Sample.Domain.Meetings;
 using Sample.SharedKernel.Application;
 using Mapster;
 using System.Collections.Generic;

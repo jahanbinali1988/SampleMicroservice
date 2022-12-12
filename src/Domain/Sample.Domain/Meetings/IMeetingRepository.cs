@@ -3,7 +3,7 @@ using Sample.SharedKernel.Shared;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sample.Domain.Meeting
+namespace Sample.Domain.Meetings
 {
     public interface IMeetingRepository : IRepository<MeetingEntity>
     {

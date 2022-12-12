@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Sample.Domain.Test.Meeting
+namespace Sample.Domain.Test.Meetings
 {
     public class MeetingEntityTests
     {

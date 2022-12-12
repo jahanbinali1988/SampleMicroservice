@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Sample.Domain.Meeting.DomainServices
+namespace Sample.Domain.Meetings.DomainServices
 {
     public interface IBookMeetingService
     {

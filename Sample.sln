@@ -38,6 +38,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Domain.Test", "test\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Api", "src\Presentation\Sample.Api\Sample.Api.csproj", "{24172FF0-2012-46E2-A19C-FB41069C337F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.IntegrationTest", "test\Sample.IntegrationTest\Sample.IntegrationTest.csproj", "{099A74F0-3FB2-413C-905F-CC4A3E3EF66D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{24172FF0-2012-46E2-A19C-FB41069C337F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24172FF0-2012-46E2-A19C-FB41069C337F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24172FF0-2012-46E2-A19C-FB41069C337F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{099A74F0-3FB2-413C-905F-CC4A3E3EF66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099A74F0-3FB2-413C-905F-CC4A3E3EF66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099A74F0-3FB2-413C-905F-CC4A3E3EF66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099A74F0-3FB2-413C-905F-CC4A3E3EF66D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{2472DE2C-59F6-4FFB-82D5-43D659F739F8} = {F16D2CA5-5639-415A-808A-8EBE60BE1195}
 		{56A5C570-2B18-485A-88F4-EDC33C1C582D} = {B3D5D7F5-769A-4C3E-B455-6EDFE5C85802}
 		{24172FF0-2012-46E2-A19C-FB41069C337F} = {AE8B845F-969D-452B-9910-E5106668881D}
+		{099A74F0-3FB2-413C-905F-CC4A3E3EF66D} = {B3D5D7F5-769A-4C3E-B455-6EDFE5C85802}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E32C163-A7C0-46D0-9FCF-0B71CB25967E}

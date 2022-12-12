@@ -1,6 +1,6 @@
 ﻿using Sample.Application.Contract.Meeting;
 using Sample.Application.Contract.Meeting.Command;
-using Sample.Domain.Meeting;
+using Sample.Domain.Meetings;
 using Sample.SharedKernel.Application;
 using Sample.SharedKernel.SeedWork;
 using Mapster;

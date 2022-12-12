@@ -1,16 +1,15 @@
 ﻿using Sample.Api.Models;
 using Sample.Api.Models.Meeting;
-using Sample.Application.Contract.Meeting;
-using Sample.Application.Contract.Meeting.Command;
-using Sample.Application.Contract.Meeting.Query;
-using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Mapster;
+using Sample.Application.Contract.Meeting.Command;
+using System.Collections.Generic;
+using Sample.Application.Contract.Meeting.Query;
+using Sample.Application.Contract.Meeting;
 
 namespace Sample.Api.Controllers
 {
@@ -28,7 +27,7 @@ namespace Sample.Api.Controllers
         }
 
         /// <summary>
-        /// Create DiscountPolicy entity
+        /// Create Meeting entity
         /// </summary>
         /// <param name="request"></param>
         /// <response code="201" >Entity created</response>
@@ -39,14 +38,11 @@ namespace Sample.Api.Controllers
             var command = request.Adapt<CreateMeetingCommand>();
             var meeting = await _mediator.Send(command);
 
-            var reserveCommand = new MarkAsReservedCommand(meeting.Id);
-            await _mediator.Send(reserveCommand);
-
             return Created(meeting.Adapt<MeetingViewModel>());
         }
 
         /// <summary>
-        /// Get meeting list by host msisdn
+        /// Get Meeting list by host msisdn
         /// </summary>
         /// <param name="msisdn"></param>
         /// <param name="request"></param>
@@ -54,7 +50,7 @@ namespace Sample.Api.Controllers
         /// <response code="400">Entity has missing/invalid values</response>
         /// <response code="404">Entity not found</response>
         [HttpGet("{msisdn:required}/meetings")]
-        public async Task<ActionResult<IEnumerable<MeetingViewModel>>> GetDiscountListAsync([FromRoute] long msisdn, [FromQuery] GetListRequest request)
+        public async Task<ActionResult<IEnumerable<MeetingViewModel>>> GetMeetingListAsync([FromRoute] long msisdn, [FromQuery] GetListRequest request)
         {
             var query = new GetHostMeetingsListQuery(msisdn, request.Offset, request.Count);
 
@@ -64,7 +60,7 @@ namespace Sample.Api.Controllers
         }
 
         /// <summary>
-        /// book meeting entity
+        /// book Meeting entity
         /// </summary>
         /// <param name="id"></param>
         /// <param name="request"></param>

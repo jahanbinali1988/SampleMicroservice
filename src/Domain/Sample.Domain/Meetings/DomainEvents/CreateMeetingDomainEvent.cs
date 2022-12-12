@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sample.Domain.Meeting.DomainEvents
+namespace Sample.Domain.Meetings.DomainEvents
 {
     public class CreateMeetingDomainEvent
     {

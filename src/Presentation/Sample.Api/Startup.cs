@@ -1,20 +1,12 @@
 using Sample.Api.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Sample.Api
 {
@@ -72,9 +64,9 @@ namespace Sample.Api
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Subscription API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sample API V1");
                 c.RoutePrefix = "docs";
-                c.DocumentTitle = "Subscription API";
+                c.DocumentTitle = "Sample API";
             });
 
             app.UseEndpoints(endpoints =>

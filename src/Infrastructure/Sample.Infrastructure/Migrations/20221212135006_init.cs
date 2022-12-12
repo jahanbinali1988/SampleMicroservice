@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sample.Infrastructure.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Meetings",
+                name: "MeetingEntity",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -25,12 +25,12 @@ namespace Sample.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Meetings", x => x.Id);
+                    table.PrimaryKey("PK_MeetingEntity", x => x.Id);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Meetings_Id",
-                table: "Meetings",
+                name: "IX_MeetingEntity_Id",
+                table: "MeetingEntity",
                 column: "Id",
                 unique: true);
         }
@@ -38,7 +38,7 @@ namespace Sample.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Meetings");
+                name: "MeetingEntity");
         }
     }
 }
