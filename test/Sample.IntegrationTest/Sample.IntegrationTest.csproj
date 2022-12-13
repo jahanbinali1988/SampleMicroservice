@@ -23,7 +23,7 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyModel" Version="6.0.0" />
         <PackageReference Include="Bogus" Version="34.0.2" />
         <PackageReference Include="FluentAssertions" Version="6.7.0" />
-        <PackageReference Include="Testcontainers" Version="2.0.1" />
+        <PackageReference Include="Testcontainers" Version="2.3.0" />
         <PackageReference Include="WireMock.Net" Version="1.4.43" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.11" />
 	</ItemGroup>

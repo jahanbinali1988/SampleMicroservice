@@ -23,6 +23,16 @@ namespace Sample.Domain.Meetings
             UpdateHostMsisdn(msisdn);
         }
 
+        public static MeetingEntity CreateForTest(long msisdn, DateTimeOffset startDate, DateTimeOffset endDate, Guid? id)
+        {
+            var meeting = new MeetingEntity(msisdn, id);
+            meeting.UpdateStartDate(startDate);
+            meeting.UpdateEndDate(endDate);
+            meeting.UpdateStatus(MeetingStatus.None);
+
+            return meeting;
+        }
+
         public static async Task<MeetingEntity> CreateAsync(long msisdn, 
             DateTimeOffset startDate, DateTimeOffset endDate, Guid? id)
         {

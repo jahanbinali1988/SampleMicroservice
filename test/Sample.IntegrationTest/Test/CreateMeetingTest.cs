@@ -1,42 +1,40 @@
-﻿using Bogus;
-using FluentAssertions;
+﻿using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
+using Sample.Api;
 using Sample.Api.Models.Meeting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Sample.Domain.Meetings;
+using Sample.Infrastructure.Persistence;
+using Sample.IntegrationTest.Creator;
+using Sample.IntegrationTest.Setup;
 using System.Net.Http.Json;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Sample.IntegrationTest.Test
 {
-    public class CreateMeetingTest : IClassFixture<Bootstraper>
+    public class CreateMeetingTest : IntegrationTestBase
     {
-        private readonly HttpClient _client;
-        private readonly Faker<CreateMeetingRequest> _meetingGenerator = new Faker<CreateMeetingRequest>()
-            .RuleFor(x => x.HostMsisdn, 123)
-            .RuleFor(x => x.StartDate, faker => faker.Date.FutureOffset())
-            .RuleFor(x => x.EndDate, faker => faker.Date.FutureOffset().AddMinutes(20));
+        private readonly IntegrationTestFactory<Program, SampleDbContext> _integrationTestFactory;
+        private readonly MeetingCreator _meetingCreator;
 
-        public CreateMeetingTest(Bootstraper bootstrapper)
+        public CreateMeetingTest(IntegrationTestFactory<Program, SampleDbContext> factory) : base(factory)
         {
-            _client = bootstrapper.CreateClient();
+            _integrationTestFactory = factory;
+            var scope = factory.Services.CreateScope();
+            _meetingCreator = scope.ServiceProvider.GetRequiredService<MeetingCreator>();
         }
 
         [Fact]
         public async Task Test()
         {
             // Arrange
-            var meeting = _meetingGenerator.Generate();
+            await _meetingCreator.AddMeetingsAsync();
+            var client = _integrationTestFactory.CreateClient();
 
             // Act
-            var response = await _client.PostAsJsonAsync("meeting", meeting);
+            var meetingReponse = await client.GetFromJsonAsync<IList<MeetingEntity>>("meeting");
 
             // Assert
-            var customerResponse = await response.Content.ReadFromJsonAsync<MeetingViewModel>();
-            customerResponse.Should().BeEquivalentTo(meeting);
+            Assert.NotNull(meetingReponse);
         }
     }
 }
