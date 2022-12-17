@@ -28,6 +28,7 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
 		<PackageReference Include="Sentry.Extensions.Logging" />
+		
 	</ItemGroup>
 
 	<ItemGroup>

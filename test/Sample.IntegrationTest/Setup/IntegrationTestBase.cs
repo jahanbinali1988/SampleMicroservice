@@ -1,20 +1,14 @@
-﻿using Sample.Api;
-using Sample.Infrastructure.Persistence;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
+﻿using Xunit;
 
 namespace Sample.IntegrationTest.Setup
 {
-    public class IntegrationTestBase : IClassFixture<IntegrationTestFactory<Program, SampleDbContext>>
+    public class IntegrationTestBase : IClassFixture<IntegrationTestFactory>
     {
-        public readonly IntegrationTestFactory<Program, SampleDbContext> Factory;
-        public readonly SampleDbContext DbContext;
+        protected readonly HttpClient _client;
 
-        public IntegrationTestBase(IntegrationTestFactory<Program, SampleDbContext> factory)
+        public IntegrationTestBase(IntegrationTestFactory factory)
         {
-            Factory = factory;
-            var scope = factory.Services.CreateScope();
-            DbContext = scope.ServiceProvider.GetRequiredService<SampleDbContext>();
+            _client = factory.CreateClient();
         }
     }
 }

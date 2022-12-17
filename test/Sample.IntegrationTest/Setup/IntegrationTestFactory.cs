@@ -6,34 +6,43 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Sample.Api;
+using Sample.Infrastructure.Persistence;
 using Sample.IntegrationTest.Creator;
 using Xunit;
 
 namespace Sample.IntegrationTest.Setup
 {
-    public class IntegrationTestFactory<TProgram, TDbContext> : WebApplicationFactory<TProgram>, IAsyncLifetime
-        where TProgram : class where TDbContext : DbContext
+    public class IntegrationTestFactory : WebApplicationFactory<IApiMarker>, IAsyncLifetime
     {
-        private readonly TestcontainerDatabase _container;
-
-        public IntegrationTestFactory()
-        {
-            _container = new TestcontainersBuilder<MsSqlTestcontainer>()
-                .WithDatabase(new MsSqlTestcontainerConfiguration
-                {
-                    Password = "Jahan14153",
-                })
-                .WithImage("mcr.microsoft.com/mssql/server:2017-latest")
-                .WithCleanUp(true)
-                .Build();
-        }
+        private readonly MsSqlTestcontainer _container = new TestcontainersBuilder<MsSqlTestcontainer>()
+            .WithDatabase(new MsSqlTestcontainerConfiguration
+            {
+                Password = "J@han14153",
+            })
+              .WithImage("mcr.microsoft.com/mssql/server")
+             .Build();
+        //private readonly MsSqlTestcontainer _container = new TestcontainersBuilder<MsSqlTestcontainer>()
+        //        .WithDatabase(new MsSqlTestcontainerConfiguration
+        //        {
+        //            Password = "J@han14153",
+        //            Database = "Test"
+        //        })
+        //        .WithImage("mcr.microsoft.com/mssql/server")
+        //        .WithEnvironment("ACCEPT_EULA", "Y")
+        //        .WithEnvironment("SA_PASSWORD", "J@han14153")
+        //        .WithEnvironment("MSSQL_SA_PASSWORD", "J@han14153")
+        //        .WithEnvironment("MSSQL_PID", "Express")
+        //        .WithCleanUp(true)
+        //        .Build();
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.ConfigureTestServices(services =>
             {
-                services.RemoveDbContext<TDbContext>();
-                services.AddDbContext<TDbContext>(options => { options.UseSqlServer(_container.ConnectionString); });
+                services.RemoveAll(typeof(SampleDbContext));
+                services.AddDbContext<SampleDbContext>(options => { options.UseSqlServer(_container.ConnectionString); });
                 services.AddTransient<MeetingCreator>();
             });
         }

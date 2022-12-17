@@ -1,5 +1,4 @@
-﻿using Docker.DotNet.Models;
-using Sample.Domain.Meetings;
+﻿using Sample.Domain.Meetings;
 using Sample.Infrastructure.Persistence;
 
 namespace Sample.IntegrationTest.Creator
