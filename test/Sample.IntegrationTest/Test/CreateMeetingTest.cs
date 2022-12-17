@@ -9,19 +9,19 @@ namespace Sample.IntegrationTest.Test
 {
     public class CreateMeetingTest : IntegrationTestBase
     {
-        private readonly MeetingCreator _meetingCreator;
+        // private readonly MeetingCreator _meetingCreator;
 
         public CreateMeetingTest(IntegrationTestFactory apiFactory) : base(apiFactory)
         {
-            var scope = apiFactory.Services.CreateScope();
-            _meetingCreator = scope.ServiceProvider.GetRequiredService<MeetingCreator>();
+            //var scope = apiFactory.Services.CreateScope();
+            //_meetingCreator = scope.ServiceProvider.GetRequiredService<MeetingCreator>();
         }
 
         [Fact]
         public async Task Test()
         {
             // Arrange
-            await _meetingCreator.AddMeetingsAsync();
+            //await _meetingCreator.AddMeetingsAsync();
 
             // Act
             var meetingReponse = await _client.GetFromJsonAsync<IList<MeetingEntity>>("meeting");

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sample.Domain.Meetings;
 using Sample.Infrastructure.Domain.Meetings;
+using System.Reflection.Emit;
+using System.Reflection;
 
 namespace Sample.Infrastructure.Persistence
 {
@@ -14,6 +16,9 @@ namespace Sample.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new MeetingTypeConfiguration());
+            base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
         }
 
         public DbSet<MeetingEntity> Meetings { get; set; }
